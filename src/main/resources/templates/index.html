@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .question, .results {
+            margin-bottom: 20px;
+        }
+        .question label, .results label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px; /* Ensure space below the button */
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .total-points {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="question">
+        <p id="kanji"></p>
+        <input type="text" id="answer" placeholder="Your answer">
+    </div>
+    <div class="results">
+        <label for="total-correct">Total Correct: <span id="total-correct">0</span></label>
+        <label for="total-fail">Total Fail: <span id="total-fail">0</span></label>
+        <p id="status"></p>
+    </div>
+
+<!--    <button onclick="checkAnswer()">Submit</button>-->
+    <button id="sub-btn">Submit</button>
+</div>
+<script src="/js/comm.js"></script>
+</body>
+</html>

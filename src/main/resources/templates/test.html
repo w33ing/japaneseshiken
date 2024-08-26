@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+    nav {
+        margin: 15px;
+    }
+    nav a {
+        margin: 10px;
+        text-decoration: none;
+        color: #4CAF50;
+    }
+    section {
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>John Doe's Portfolio</h1>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Projects</a>
+  <a href="#">Blog</a>
+  <a href="#">Contact</a>
+</nav>
+
+<section>
+  <h2>About Me</h2>
+  <p>Hello! I'm John Doe, a web developer with a passion for creating modern and responsive web applications.</p>
+
+  <h2>My Skills</h2>
+  <table>
+    <tr>
+      <th>Skill</th>
+      <th>Experience Level</th>
+    </tr>
+    <tr>
+      <td>HTML/CSS</td>
+      <td>Expert</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>Advanced</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>Intermediate</td>
+    </tr>
+  </table>
+
+  <h2>Get in Touch</h2>
+  <form action="#" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2024 John Doe | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

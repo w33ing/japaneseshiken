@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX with Spring Boot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<button id="fetchButton">Fetch Data</button>
+<p id="response"></p>
+
+<script>
+    $(document).ready(function() {
+        $('#fetchButton').click(function() {
+            $.ajax({
+                url: '/api/data',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $('#response').text(data.message);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
