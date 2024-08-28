@@ -5,10 +5,7 @@ import com.nihon.shiken.model.mKanji;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,8 +38,8 @@ public class MainController {
 
     @GetMapping("/getkanji")
     @ResponseBody
-    public String getKanji() {
-        Resource csvFile = new ClassPathResource("source/kanjiN5.csv");
+    public String getKanji(String path) {
+        Resource csvFile = new ClassPathResource(path);
         String line = "";
         String csvSplitBy = ","; // Delimiter (comma by default)
 
@@ -76,7 +73,7 @@ public class MainController {
     @GetMapping("/random")
     @ResponseBody
     public String random(){
-        getKanji();
+//        getKanji();
         Random random = new Random();
         int rand = random.nextInt(kanjiList.size());
 
@@ -92,12 +89,16 @@ public class MainController {
         System.out.println(json);
         return  json;
     }
-    @GetMapping("fetchkanji")
-    public  String fetchkanji(){
-        return "fetchkanji";
+    @GetMapping("/n5kanji")
+    public String showN5Kanji(){
+        String path = "source/kanjiN5.csv";
+        getKanji(path);
+        return "n5kanji";
     }
-    @GetMapping("getdata")
-    public String getdata(){
-        return "getdata";
+    @GetMapping("/n4kanji")
+    public String showN4Kanji(){
+        String path = "source/KanjiN4.csv";
+        getKanji(path);
+        return "n4kanji";
     }
 }
