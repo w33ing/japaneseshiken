@@ -101,4 +101,10 @@ public class MainController {
         getKanji(path);
         return "n4kanji";
     }
+    @GetMapping("/n4radical")
+    public String showN4radial(){
+        String path = "source/RadicalN4.csv";
+        getKanji(path);
+        return "n4radical";
+    }
 }
