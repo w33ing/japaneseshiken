@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <div id="status"></div>
+        <h1 class="text-2xl font-bold mb-4 text-center">Quiz App</h1>
+        
+        <!-- Question Section -->
+        <div class="mb-4 p-4 bg-gray-100 border border-gray-300 rounded-lg">
+            <p id="eng-mean" class="text-lg font-medium"></p>
+        </div>
+        <div class="mb-4 p-4 bg-gray-100 border border-gray-300 rounded-lg">
+            <p id="kanji" class="text-lg font-medium"></p>
+        </div>
+        
+        <!-- Answer Buttons -->
+        <div class="grid grid-cols-2 gap-4">
+            <button data-id="1" id="answer1" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"></button>
+            <button data-id="2" id="answer2" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"></button>
+            <button data-id="3" id="answer3" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"></button>
+            <button data-id="4" id="answer4" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"></button>
+        </div>
+    </div>
+    <script src="/js/comm.js"></script>
+</body>
+</html>

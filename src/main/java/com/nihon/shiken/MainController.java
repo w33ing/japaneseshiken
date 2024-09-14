@@ -2,6 +2,8 @@ package com.nihon.shiken;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihon.shiken.model.mKanji;
+import com.nihon.shiken.model.mMultipleChoice;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/api")
@@ -50,12 +53,11 @@ public class MainController {
                 String[] values = line.split(csvSplitBy);
 
                 mKanji k = new mKanji();
-                k.setKanji(values[0]);
-                k.setHiragana(values[1]);
+                k.setKanji(values[1]);
+                k.setHiragana(values[0]);
                 k.setMeaning(values[2]);
                 k.setSentry(false);
                 kanjiList.add(k);
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,22 +75,48 @@ public class MainController {
     @GetMapping("/random")
     @ResponseBody
     public String random(){
-//        getKanji();
         Random random = new Random();
         int rand = random.nextInt(kanjiList.size());
 
         mKanji toAnswer = kanjiList.get(rand);
 
+        mMultipleChoice multipleChoice = new mMultipleChoice();
+        List<String> mul = new ArrayList<>();
+
+        multipleChoice.setHiragana(toAnswer.getHiragana());
+        multipleChoice.setKanji(toAnswer.getKanji());
+        multipleChoice.setMeaning(toAnswer.getMeaning());
+        
+
+        for(int i = 0; i < 4; i++)
+        {
+            if(i == 0){
+                mul.add(toAnswer.getMeaning());
+            }
+            else{
+                int ran = random.nextInt(kanjiList.size());
+                mKanji m = kanjiList.get(ran);
+                mul.add(m.getMeaning());
+            }
+        }
+
+        Collections.shuffle(mul);
+        multipleChoice.setSelection1(mul.get(0));
+        multipleChoice.setSelection2(mul.get(1));
+        multipleChoice.setSelection3(mul.get(2));
+        multipleChoice.setSelection4(mul.get(3));
+
         ObjectMapper objMapper = new ObjectMapper();
         String json = null;
         try {
-            json = objMapper.writeValueAsString(toAnswer);
+            json = objMapper.writeValueAsString(multipleChoice);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         System.out.println(json);
         return  json;
     }
+
     @GetMapping("/n5kanji")
     public String showN5Kanji(){
         String path = "source/kanjiN5.csv";
@@ -106,5 +134,12 @@ public class MainController {
         String path = "source/RadicalN4.csv";
         getKanji(path);
         return "n4radical";
+    }
+    @GetMapping("/n4vocab")
+    public String showN4vocab(){
+        String path = "source/VocabN4.csv";
+        getKanji(path);
+
+        return "n4vocab";
     }
 }
